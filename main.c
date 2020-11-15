@@ -6,8 +6,8 @@
 
 int gameboard[N][N];
 
-void main(...)
-{
+int main(int argc, char *argv[]) {
+
 	int userInput[2];
     int flipNum = 0, passCnt=0;
     char turnColor[6] = "white";
@@ -51,9 +51,4 @@ void main(...)
     printf("If you exit the program, enter any key.\n");
     scanf("%d", &temp);
     return 0;
-}
-
-
-int main(int argc, char *argv[]) {
-	return 0;
 }
