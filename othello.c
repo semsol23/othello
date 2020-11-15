@@ -83,15 +83,14 @@ int isCanNotPlay(char turnColor[], int gameboard[N][N]){
 }
 
 int validateUserInput(char color[], int userInput[], int gameboard[N][N]) {
-    // 1 : User input is over than N.
-    if(userInput[0] >= N || userInput[1] >= N){
-        printf("[INVALID INPUT!] Should be less than %d.\n", N);
+    if(userInput[0] >= N || userInput[1] >= N){ /*행 또는 열 값이 행과 열 수 보다 크거나 같을 때 */
+        printf("[INVALID INPUT!] Should be less than %d.\n", N); /*이 때 출력되는 invalid*/
         return 0;
-    }else if(gameboard[userInput[0]][userInput[1]] != 0){
-        printf("[INVALID INPUT!] Already occupied.\n");
+    }else if(gameboard[userInput[0]][userInput[1]] != 0){ /*이미 O 또는 X로 차지된 칸을 선택할 때*/
+        printf("[INVALID INPUT!] Already occupied.\n"); /*이 때 출력되는 invalid*/
         return 0;
-    }else if(canFlip(color, userInput, gameboard) == 0){
-        printf("[INVALID INPUT!] No flip happens.\n");
+    }else if(canFlip(color, userInput, gameboard) == 0){ /*뒤집을 반대색이 하나도 없는 자리일 때*/
+        printf("[INVALID INPUT!] No flip happens.\n"); /*이 때 출력되는 invalid*/
         return 0;
     }
     
@@ -99,9 +98,9 @@ int validateUserInput(char color[], int userInput[], int gameboard[N][N]) {
 }
 
 int canFlip(char color[], int userInput[], int gameboard[N][N]) {
-    if(getFlipDirection(color, userInput, gameboard) >= 0){
+    if(getFlipDirection(color, userInput, gameboard) >= 0){ 
         return 1;
-    }else{
+    }else{ 
         return 0;
     }
 };
@@ -195,26 +194,23 @@ int doFlip(char color[], int userInput[], int gameboard[N][N]) {
 
 int isGameEnd(int gameboard[N][N]) {
     int i, j;
-    int whiteNum = 0;
-    int blackNum = 0;
-    int blankNum = 0;
+    int whiteNum = 0; /*초기값 설정*/
+    int blackNum = 0; /*초기값 설정*/
+    int blankNum = 0; /*초기값 설정*/
     
     for(i=0; i<N; i++){
         for(j=0; j<N; j++){
-            if(gameboard[i][j] == 1) whiteNum++;
-            else if(gameboard[i][j] == 2) blackNum++;
-            else if(gameboard[i][j] == 0) blankNum++;
+            if(gameboard[i][j] == 1) whiteNum++; /*게임판 배열에서 1(O)가 출력될 때 마다 whiteNum 변수에 +1*/
+            else if(gameboard[i][j] == 2) blackNum++; /*게임판 배열에서 2(X)가 출력될 때 마다 blackNum 변수에 +1*/
+            else if(gameboard[i][j] == 0) blankNum++; /*게임판 배열에서 0( )가 출력될 때 마다 blankNum 변수에 +1*/
         }
     }
-    // 1. There is just one color.
-    if(whiteNum == 0 || blackNum == 0){
-        printf("\n [END] There is just [%s] color.\n", whiteNum == 0 ? "black" : "white");
+    if(whiteNum == 0 || blackNum == 0){ /*O 또는 X가 0개 일 때*/
+        printf("\n [END] There is just [%s] color.\n", whiteNum == 0 ? "black" : "white"); /*O가 0개이면 black만 있음을 출력*/
         return 1;
     }
-    
-    // 2. There is no blank.
-    if(blankNum == 0){
-        printf("\n [END] There is no blank\n");
+    if(blankNum == 0){ /*blank가 0개 일 때*/
+        printf("\n [END] There is no blank\n"); /*더 이상 놓을 수 있는 빈칸이 없음을 출력*/
         return 1;
     }
     return 0;
@@ -227,13 +223,13 @@ void checkResult(int gameboard[N][N]) {
     
     for(i=0; i<N; i++) {
         for(j=0; j<N; j++) {
-            if(gameboard[i][j] == 1) whiteNum++;
-            else if(gameboard[i][j] == 2) blackNum++;
+            if(gameboard[i][j] == 1) whiteNum++; /*게임판 배열에서 1(O)가 출력될 때 마다 whiteNum 변수에 +1*/
+            else if(gameboard[i][j] == 2) blackNum++;/*게임판 배열에서 2(X)가 출력될 때 마다 blackNum에 +1*/
         }
     }
-    if(whiteNum == blackNum){
+    if(whiteNum == blackNum){ /*O와 X의 갯수가 같은 경우*/
         printf("[ DRAW ]\n- - - GAME END - - -\n");
-    }else{
-        printf("[ %s ] is WIN!\n- - - GAME END - - -\n",whiteNum > blackNum ? "WHITE" : "BLACK");
+    }else{ /*O와 X의 갯수가 다른 경우*/
+        printf("[ %s ] is WIN!\n- - - GAME END - - -\n",whiteNum > blackNum ? "WHITE" : "BLACK"); /*승자 출력, whiteNum이 blackNum보다 큰 경우 승자는 white, 반대면 black*/
     }
 }
