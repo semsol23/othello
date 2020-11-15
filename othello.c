@@ -2,6 +2,8 @@
 #include "othello.h"
 #include "util.h"
 
+/*변수 및 함수 정의*/
+
 void printOthello(int gameboard[N][N]);
 void initOthello(int gameboard[N][N]);
 void printDashLine();
@@ -15,20 +17,19 @@ int doFlip(char color[], int userInput[], int gameboard[N][N]);
 int isGameEnd(int gameboard[N][N]);
 void checkResult(int gameboard[N][N]);
 
-
 void printOthello(int gameboard[N][N]) {
     int i, j;
     int oNum = 0;
     int xNum = 0;
-    printf("  ");
-    for(i=0; i<N; i++){
-        printf("%d ",i);
+    printf("  "); /*열 숫자 시작 전 spacebar*/
+    for(i=0; i<N; i++){ 
+        printf("%d ",i); /*0~5 띄어쓰기 포함해서 나열*/
     }
     for(i=0; i<N; i++){
-        printDashLine(N);
-        printf("\n%d|",i);
+        printDashLine(N); /*줄바꿈 후 첫번째 dashline*/
+        printf("\n%d|",i); /*줄바꿈 사용해서 행 숫자 세로로 나열*/
         for(j=0; j<N; j++){
-            if(gameboard[i][j] == 0){
+            if(gameboard[i][j] == 0){ 
                 printf(" |");
             }else if(gameboard[i][j] == 1){
                 printf("O|");
@@ -48,12 +49,12 @@ void initOthello(int gameboard[N][N]) {
     int i, j;
     for(i=0; i<N; i++){
         for(j=0; j<N; j++ ){
-            if((i==2 && j==2) || (i==3 && j==3)){
-                gameboard[i][j] = 1;
-            }else if((i==2 && j==3) || (i==3 && j==2)){
-                gameboard[i][j] = 2;
-            }else{
-                gameboard[i][j] = 0;
+            if((i==2 && j==2) || (i==3 && j==3)){ /*행과 열이 모두 2 또는 모두 3일 때 */
+                gameboard[i][j] = 1; /*O 표기*/
+            }else if((i==2 && j==3) || (i==3 && j==2)){ /*행과 열이 2,3 이거나 3,2 일 때*/
+                gameboard[i][j] = 2; /*X 표기*/
+            }else{ /*위 두 가지 상황이 아닐 때*/
+                gameboard[i][j] = 0; /*| 표기*/
             }
         }
     }
@@ -63,7 +64,7 @@ void printDashLine() {
     int i;
     printf("\n -");
     for(i=0; i<N; i++){
-        printf("--");
+        printf("--"); /*- 2개씩 행과 열 수(N)만큼 */
     }
 }
 
