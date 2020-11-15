@@ -40,7 +40,6 @@ int main(int argc, char *argv[]) {
                 flipNum += doFlip(turnColor, userInput, gameboard);
             }
             if(flipNum > 0){
-//                printf("%d 개 바뀜.\n", flipNum);
                 changeColor(turnColor);
             }
         }
