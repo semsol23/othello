@@ -34,18 +34,18 @@ int main(int argc, char *argv[]) {
         printf("\nput a new %s othello : ", turnColor);/*다음 차례의 플레이어 선언*/
         scanf("%d %d", &userInput[0], &userInput[1]);/*1 3 의 형태로 입력한 좌표를 게임판 좌표로서 userInput에 대입*/
         
-        if(validateUserInput(turnColor, userInput, gameboard) == 1){
-            flipNum = doFlip(turnColor, userInput, gameboard);
+        if(validateUserInput(turnColor, userInput, gameboard) == 1){ /*유요한 좌표일 때*/
+            flipNum = doFlip(turnColor, userInput, gameboard);/*뒤집을 돌 갯수*/
             while(canFlip(turnColor, userInput, gameboard) == 1){
                 flipNum += doFlip(turnColor, userInput, gameboard);
             }
             if(flipNum > 0){
-                changeColor(turnColor);
+                changeColor(turnColor);/*뒤집을 돌 갯수만큼 색 문자열 반대색으로 변환*/
             }
         }
 		
     }
-    printOthello(gameboard);
+    printOthello(gameboard);/*게임판 현황 출력*/
     
     printf("If you exit the program, enter any key.\n");
     scanf("%d", &temp);
