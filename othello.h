@@ -4,4 +4,8 @@
 
 #include <stdio.h>
 
+void printOthello(int gameboard[N][N]);
+void initOthello(int gameboard[N][N]);
+void printDashLine();
+
 #endif /* othello_h */

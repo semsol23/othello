@@ -8,25 +8,19 @@ int gameboard[N][N];
 
 void main(...)
 {
-	/*�ʿ��� ���� ���� */
-	init_othello(); /*���� �ʱ�ȭ*/ 
-	
-	while (isGameEnd()==0)
-	{
-		print_othello(); /*��ġ ���� ���*/ 
-		if (/*��ġ�� ������ ĭ�� �ִ��� Ȯ��*/)
-			continue;
-		/*��ġ�� ��ǥ �Է� �ޱ�*/ 
-		if (/*�Է���ǥ�� �������� üũ*/)
-			if (/*������ �õ�*/)
-			{
-				/*� ���������� ���*/
-				/*�� �ٲ�*/ 
-			}
-		else
-			/*�������� �Է����� ���*/ 
-	}
-	check_result(); /*��� ���*/ 
+	int userInput[2];
+    int flipNum = 0, passCnt=0;
+    char turnColor[6] = "white";
+    int temp;
+
+	initOthello(gameboard);
+    
+    
+    printOthello(gameboard);
+    
+    printf("If you exit the program, enter any key.\n");
+    scanf("%d", &temp);
+    return 0;
 }
 
 
