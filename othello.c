@@ -73,13 +73,13 @@ int isCanNotPlay(char turnColor[], int gameboard[N][N]){
     int i, j;
     for(i=0; i<N; i++){
         for(j=0; j<N; j++){
-            if(gameboard[i][j] == 0){
+            if(gameboard[i][j] == 0){ /* |일 때 = 빈자리일 때*/
                 int blankPoint[2] = {i,j};
                 if(canFlip(turnColor, blankPoint, gameboard)) return 0;
             }
         }
     }
-    return 1;
+    return 1; /*배치할 곳이 없을 때*/
 }
 
 int validateUserInput(char color[], int userInput[], int gameboard[N][N]) {
