@@ -7,9 +7,9 @@ void changeColor(char color[]);
 
 int getColorToInt(char color[]) {
     int colorInt = 0;
-    if(strcmp(color, "white") == 0){
+    if(strcmp(color, "white") == 0){ /*문자열 white를 colorInt변수에 1으로 저장*/
         colorInt = 1;
-    }else{
+    }else{ /*문자열 black을 colorInt변수에 2로 저장*/
         colorInt = 2;
     }
     return colorInt;
@@ -31,11 +31,11 @@ void changeColor(char color[]) {
     char whiteChar[6] = "white";
     if(strcmp(color, "white") == 0){
         for(i=0; i<5; i++){
-            color[i] = blackChar[i];
+            color[i] = blackChar[i]; /*문자열 white를 black으로 변경*/
         }
     }else{
         for(i=0; i<5; i++){
-            color[i] = whiteChar[i];
+            color[i] = whiteChar[i]; /*문자열 black을 white로 변경*/
         }
     }
 };
