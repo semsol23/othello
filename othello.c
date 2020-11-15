@@ -17,16 +17,17 @@ void checkResult(int gameboard[N][N]);
 
 
 void printOthello(int gameboard[N][N]) {
+    int i, j;
     int oNum = 0;
     int xNum = 0;
     printf("  ");
     for(int i=0; i<N; i++){
         printf("%d ",i);
     }
-    for(int i=0; i<N; i++){
+    for(i=0; i<N; i++){
         printDashLine(N);
         printf("\n%d|",i);
-        for(int j=0; j<N; j++){
+        for(j=0; j<N; j++){
             if(gameboard[i][j] == 0){
                 printf(" |");
             }else if(gameboard[i][j] == 1){
@@ -44,8 +45,9 @@ void printOthello(int gameboard[N][N]) {
 }
 
 void initOthello(int gameboard[N][N]) {
-    for(int i=0; i<N; i++){
-        for(int j=0; j<N; j++ ){
+    int i, j;
+    for(i=0; i<N; i++){
+        for(j=0; j<N; j++ ){
             if((i==2 && j==2) || (i==3 && j==3)){
                 gameboard[i][j] = 1;
             }else if((i==2 && j==3) || (i==3 && j==2)){
@@ -66,8 +68,9 @@ void printDashLine() {
 
 
 int isCanNotPlay(char turnColor[], int gameboard[N][N]){
-    for(int i=0; i<N; i++){
-        for(int j=0; j<N; j++){
+    int i, j;
+    for(i=0; i<N; i++){
+        for(j=0; j<N; j++){
             if(gameboard[i][j] == 0){
                 int blankPoint[2] = {i,j};
                 if(canFlip(turnColor, blankPoint, gameboard)) return 0;
@@ -102,6 +105,7 @@ int canFlip(char color[], int userInput[], int gameboard[N][N]) {
 };
 
 int getFlipDirection(char color[], int userInput[], int gameboard[N][N]) {
+    int i;
     int colorInt = getColorToInt(color);
     int flipDirection = -1;
     int *checkPoint, *nextCheckPoint;
@@ -116,7 +120,7 @@ int getFlipDirection(char color[], int userInput[], int gameboard[N][N]) {
         {-1,0}
     };
     
-    for(int i=0; i<8; i++){
+    for(i=0; i<8; i++){
         checkPoint = getCheckPoint(userInput, toCheckPointsValue[i]);
         if(isInSidePoint(checkPoint) == 1){
             if(gameboard[checkPoint[0]][checkPoint[1]] != 0
@@ -188,12 +192,13 @@ int doFlip(char color[], int userInput[], int gameboard[N][N]) {
 }
 
 int isGameEnd(int gameboard[N][N]) {
+    int i, j;
     int whiteNum = 0;
     int blackNum = 0;
     int blankNum = 0;
     
-    for(int i=0; i<N; i++){
-        for(int j=0; j<N; j++){
+    for(i=0; i<N; i++){
+        for(j=0; j<N; j++){
             if(gameboard[i][j] == 1) whiteNum++;
             else if(gameboard[i][j] == 2) blackNum++;
             else if(gameboard[i][j] == 0) blankNum++;
@@ -214,11 +219,12 @@ int isGameEnd(int gameboard[N][N]) {
 }
 
 void checkResult(int gameboard[N][N]) {
+    int i, j;
     int whiteNum = 0;
     int blackNum = 0;
     
-    for(int i=0; i<N; i++) {
-        for(int j=0; j<N; j++) {
+    for(i=0; i<N; i++) {
+        for(j=0; j<N; j++) {
             if(gameboard[i][j] == 1) whiteNum++;
             else if(gameboard[i][j] == 2) blackNum++;
         }
