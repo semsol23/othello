@@ -166,7 +166,7 @@ int doFlip(char color[], int userInput[], int gameboard[N][N]) {
     int colorInt = getColorToInt(color);
     int flipDirection = getFlipDirection(color, userInput, gameboard);
     int *nextPoint;
-    int toCheckPointsValue[8][2] = {
+    int toCheckPointsValue[8][2] = { /*선택한 자리를 기준으로 인접한 8가지 방향에 대한 좌표 설정*/
         {-1,-1},
         {0,-1},
         {+1,-1},
