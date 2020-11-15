@@ -15,7 +15,12 @@ void main(...)
 
 	initOthello(gameboard);
     
-    
+    while(isGameEnd(gameboard) == 0){
+        
+        printOthello(gameboard);
+        
+		
+    }
     printOthello(gameboard);
     
     printf("If you exit the program, enter any key.\n");
