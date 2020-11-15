@@ -110,7 +110,7 @@ int getFlipDirection(char color[], int userInput[], int gameboard[N][N]) {
     int colorInt = getColorToInt(color);
     int flipDirection = -1;
     int *checkPoint, *nextCheckPoint;
-    int toCheckPointsValue[8][2] = {
+    int toCheckPointsValue[8][2] = { /*선택한 자리를 기준으로 인접한 8가지 방향에 대한 좌표 설정*/
         {-1,-1},
         {0,-1},
         {+1,-1},
@@ -218,8 +218,8 @@ int isGameEnd(int gameboard[N][N]) {
 
 void checkResult(int gameboard[N][N]) {
     int i, j;
-    int whiteNum = 0;
-    int blackNum = 0;
+    int whiteNum = 0; /*초기값 설정*/
+    int blackNum = 0; /*초기값 설정*/
     
     for(i=0; i<N; i++) {
         for(j=0; j<N; j++) {
