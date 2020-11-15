@@ -177,7 +177,7 @@ int doFlip(char color[], int userInput[], int gameboard[N][N]) {
         {-1,0}
     };
     gameboard[userInput[0]][userInput[1]] = colorInt;
-    nextPoint = getCheckPoint(userInput, toCheckPointsValue[flipDirection]);
+    nextPoint = getCheckPoint(userInput, toCheckPointsValue[flipDirection]);/*입력한 좌표에서 더 체크하고 싶은 좌표 구함*/
     while(1){
         
         if(gameboard[nextPoint[0]][nextPoint[1]] == colorInt){
