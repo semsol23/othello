@@ -16,8 +16,9 @@ int getColorToInt(char color[]) {
 }
 
 int* getCheckPoint(int userInput[], int toCheckPointValue[]){
+    int i;
     int *result = malloc(sizeof(int) * 2);
-    for(int i=0; i<2; i++){
+    for(i=0; i<2; i++){
         result[i] = userInput[i] + toCheckPointValue[i];
     }
     return result;
@@ -25,6 +26,7 @@ int* getCheckPoint(int userInput[], int toCheckPointValue[]){
 
 
 void changeColor(char color[]) {
+    int i;
     char blackChar[6] = "black";
     char whiteChar[6] = "white";
     if(strcmp(color, "white") == 0){
@@ -32,7 +34,7 @@ void changeColor(char color[]) {
             color[i] = blackChar[i];
         }
     }else{
-        for(int i=0; i<5; i++){
+        for(i=0; i<5; i++){
             color[i] = whiteChar[i];
         }
     }
