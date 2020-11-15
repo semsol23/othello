@@ -21,7 +21,7 @@ void printOthello(int gameboard[N][N]) {
     int oNum = 0;
     int xNum = 0;
     printf("  ");
-    for(int i=0; i<N; i++){
+    for(i=0; i<N; i++){
         printf("%d ",i);
     }
     for(i=0; i<N; i++){
