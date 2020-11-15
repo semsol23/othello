@@ -19,7 +19,7 @@ int* getCheckPoint(int userInput[], int toCheckPointValue[]){
     int i;
     int *result = malloc(sizeof(int) * 2);
     for(i=0; i<2; i++){
-        result[i] = userInput[i] + toCheckPointValue[i];
+        result[i] = userInput[i] + toCheckPointValue[i];/*행과 열에 대해서 내가 선택한 자리와 더 체크하고 싶은 자리 +*/
     }
     return result;
 };
