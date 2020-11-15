@@ -18,8 +18,18 @@ void main(...)
     while(isGameEnd(gameboard) == 0){
         
         printOthello(gameboard);
-        
-		// have to check user can play
+        if(isCanNotPlay(turnColor, gameboard) == 1){
+            printf("[%s] can not place. Turn Change.\n",turnColor);
+            changeColor(turnColor);
+            passCnt++;
+            continue;
+        }else{
+            passCnt = 0;
+        }
+        if(passCnt > 1){
+            printf("White player and Black player can not play anymore.\n");
+            break;
+        }
 
         printf("\nput a new %s othello : ", turnColor);
         scanf("%d %d", &userInput[0], &userInput[1]);

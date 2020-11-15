@@ -8,6 +8,7 @@ void printOthello(int gameboard[N][N]);
 void initOthello(int gameboard[N][N]);
 void printDashLine();
 
+int isCanNotPlay(char turnColor[], int gameboard[N][N]);
 int validateUserInput(char color[], int userInput[], int gameboard[N][N]);
 int canFlip(char color[], int userInput[], int gameboard[N][N]);
 int getFlipDirection(char color[], int userInput[], int gameboard[N][N]);

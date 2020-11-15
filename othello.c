@@ -6,6 +6,7 @@ void printOthello(int gameboard[N][N]);
 void initOthello(int gameboard[N][N]);
 void printDashLine();
 
+int isCanNotPlay(char turnColor[], int gameboard[N][N]);
 int validateUserInput(char color[], int userInput[], int gameboard[N][N]);
 int canFlip(char color[], int userInput[], int gameboard[N][N]);
 int getFlipDirection(char color[], int userInput[], int gameboard[N][N]);
@@ -61,6 +62,19 @@ void printDashLine() {
     for(int i=0; i<N; i++){
         printf("--");
     }
+}
+
+
+int isCanNotPlay(char turnColor[], int gameboard[N][N]){
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            if(gameboard[i][j] == 0){
+                int blankPoint[2] = {i,j};
+                if(canFlip(turnColor, blankPoint, gameboard)) return 0;
+            }
+        }
+    }
+    return 1;
 }
 
 int validateUserInput(char color[], int userInput[], int gameboard[N][N]) {
