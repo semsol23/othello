@@ -30,7 +30,7 @@ void changeColor(char color[]) {
     char blackChar[6] = "black";
     char whiteChar[6] = "white";
     if(strcmp(color, "white") == 0){
-        for(int i=0; i<5; i++){
+        for(i=0; i<5; i++){
             color[i] = blackChar[i];
         }
     }else{
