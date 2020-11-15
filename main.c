@@ -19,6 +19,21 @@ void main(...)
         
         printOthello(gameboard);
         
+		// have to check user can play
+
+        printf("\nput a new %s othello : ", turnColor);
+        scanf("%d %d", &userInput[0], &userInput[1]);
+        
+        if(validateUserInput(turnColor, userInput, gameboard) == 1){
+            flipNum = doFlip(turnColor, userInput, gameboard);
+            while(canFlip(turnColor, userInput, gameboard) == 1){
+                flipNum += doFlip(turnColor, userInput, gameboard);
+            }
+            if(flipNum > 0){
+//                printf("%d 개 바뀜.\n", flipNum);
+                changeColor(turnColor);
+            }
+        }
 		
     }
     printOthello(gameboard);
