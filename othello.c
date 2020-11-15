@@ -42,7 +42,7 @@ void printOthello(int gameboard[N][N]) {
         }
     }
     printDashLine(N);
-    printf("\n\n STATUS - WHITE : %d, BLACK : %d\n",oNum,xNum);
+    printf("\n\n STATUS - WHITE : %d, BLACK : %d\n",oNum,xNum); /*고정출력값, 현재 흰돌과 검정돌 갯수*/
 }
 
 void initOthello(int gameboard[N][N]) {
@@ -111,7 +111,7 @@ int getFlipDirection(char color[], int userInput[], int gameboard[N][N]) {
     int flipDirection = -1;
     int *checkPoint, *nextCheckPoint;
     int toCheckPointsValue[8][2] = { /*선택한 자리를 기준으로 인접한 8가지 방향에 대한 좌표 설정*/
-        {-1,-1},
+        {-1,-1}, /*8가지 방향을 0~7의 i에 배당하고 이 8가지 중 현재 나와 같은 색의 돌이 있을 때 뒤집을 수 있다. */
         {0,-1},
         {+1,-1},
         {+1,0},
@@ -124,8 +124,8 @@ int getFlipDirection(char color[], int userInput[], int gameboard[N][N]) {
     for(i=0; i<8; i++){
         checkPoint = getCheckPoint(userInput, toCheckPointsValue[i]);
         if(isInSidePoint(checkPoint) == 1){
-            if(gameboard[checkPoint[0]][checkPoint[1]] != 0
-               && gameboard[checkPoint[0]][checkPoint[1]] != colorInt){ // 다른 색 찾았을때
+            if(gameboard[checkPoint[0]][checkPoint[1]] != 0 /*게임판 위에서 |가 아닌 O 또는 X상태일 때*/
+               && gameboard[checkPoint[0]][checkPoint[1]] != colorInt){ /*반대색 일 때*/
                 
                 nextCheckPoint = getCheckPoint(checkPoint, toCheckPointsValue[i]);
                 if(isInSidePoint(nextCheckPoint) == 0){
@@ -133,14 +133,14 @@ int getFlipDirection(char color[], int userInput[], int gameboard[N][N]) {
                     continue;
                 }
                 while(1){
-                    if(gameboard[nextCheckPoint[0]][nextCheckPoint[1]] == colorInt){
-                        flipDirection = i;
-                        break;
-                    }else if(gameboard[nextCheckPoint[0]][nextCheckPoint[1]] == 0){
+                    if(gameboard[nextCheckPoint[0]][nextCheckPoint[1]] == colorInt){ /*같은 색일 때*/
+                        flipDirection = i; /*i방향으로 flip할 수 있음.*/
+                        break; /*벗어나기*/
+                    }else if(gameboard[nextCheckPoint[0]][nextCheckPoint[1]] == 0){ /*|일 때*/
                         flipDirection = -1;
                         break;
                     }else{
-                        nextCheckPoint = getCheckPoint(nextCheckPoint, toCheckPointsValue[i]);
+                        nextCheckPoint = getCheckPoint(nextCheckPoint, toCheckPointsValue[i]); 
                         if(isInSidePoint(nextCheckPoint) == 0){
                             flipDirection = -1;
                             break;
@@ -155,7 +155,7 @@ int getFlipDirection(char color[], int userInput[], int gameboard[N][N]) {
 }
 
 int isInSidePoint(int point[]) {
-    if(point[0] < 0 || point[0] >= N || point[1] < 0 || point[1] >= N){
+    if(point[0] < 0 || point[0] >= N || point[1] < 0 || point[1] >= N){ /*모서리에 두어서 게임판에서 나가는 경우 배제*/
         return 0;
     }
     return 1;
