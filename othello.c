@@ -60,8 +60,9 @@ void initOthello(int gameboard[N][N]) {
 }
 
 void printDashLine() {
+    for i;
     printf("\n -");
-    for(int i=0; i<N; i++){
+    for(i=0; i<N; i++){
         printf("--");
     }
 }
