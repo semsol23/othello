@@ -10,10 +10,12 @@ void printDashLine();
 
 int isCanNotPlay(char turnColor[], int gameboard[N][N]);
 int validateUserInput(char color[], int userInput[], int gameboard[N][N]);
+void initFlipResult(int flipResult[8]);
 int canFlip(char color[], int userInput[], int gameboard[N][N]);
 int getFlipDirection(char color[], int userInput[], int gameboard[N][N]);
 int isInSidePoint(int point[]);
 int doFlip(char color[], int userInput[], int gameboard[N][N]);
+void printFlipResult(char color[], int flipResult[8]);
 int isGameEnd(int gameboard[N][N]);
 void checkResult(int gameboard[N][N]);
 

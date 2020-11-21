@@ -10,10 +10,12 @@ void printDashLine();
 
 int isCanNotPlay(char turnColor[], int gameboard[N][N]);
 int validateUserInput(char color[], int userInput[], int gameboard[N][N]);
+void initFlipResult(int flipResult[8]);
 int canFlip(char color[], int userInput[], int gameboard[N][N]);
 int getFlipDirection(char color[], int userInput[], int gameboard[N][N]);
 int isInSidePoint(int point[]);
 int doFlip(char color[], int userInput[], int gameboard[N][N]);
+void printFlipResult(char color[], int flipResult[8]);
 int isGameEnd(int gameboard[N][N]);
 void checkResult(int gameboard[N][N]);
 
@@ -96,6 +98,13 @@ int validateUserInput(char color[], int userInput[], int gameboard[N][N]) {
     
     return 1;
 }
+
+void initFlipResult(int flipResult[8]){
+    int i;
+    for(i=0; i<8; i++){
+        flipResult[i]=0;
+    }
+};
 
 int canFlip(char color[], int userInput[], int gameboard[N][N]) {
     if(getFlipDirection(color, userInput, gameboard) >= 0){ 
@@ -190,6 +199,18 @@ int doFlip(char color[], int userInput[], int gameboard[N][N]) {
     }
     
     return flipNum;
+}
+
+void printFlipResult(char color[], int flipResult[8]){
+    int totalFlipNum = 0;
+    printf("\n :: Flip Result :: \n");
+    printf(" W:%d E:%d N:%d S:%d NW:%d NE:%d SW:%d SE:%d \n", flipResult[1], flipResult[5], flipResult[3], flipResult[7], flipResult[2], flipResult[4], flipResult[0], flipResult[6]);
+    int i;
+    for(i=0;i<8;i++) {
+        totalFlipNum += flipResult[i];
+    }
+    color[0] = color[0]-32;
+    printf(" %s has flipped %d othellos!\n\n", color, totalFlipNum);
 }
 
 int isGameEnd(int gameboard[N][N]) {

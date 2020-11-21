@@ -8,7 +8,7 @@ int gameboard[N][N];
 
 int main(int argc, char *argv[]) {
 
-    int userInput[2];
+    int userInput[2], flipResult[8];
     int flipNum = 0, passCnt=0; /*초기값 설정*/
     char turnColor[6] = "white"; /*첫번째 player는 흰돌*/
     int temp;
@@ -35,12 +35,14 @@ int main(int argc, char *argv[]) {
         scanf("%d %d", &userInput[0], &userInput[1]);/*1 3 의 형태로 입력한 좌표를 게임판 좌표로서 userInput에 대입*/
         
         if(validateUserInput(turnColor, userInput, gameboard) == 1){ /*유요한 좌표일 때*/
+			initFlipResult(flipResult);/*결과 출력 배열, flipResult 초기화*/
             flipNum = doFlip(turnColor, userInput, gameboard);/*뒤집을 돌 갯수*/
             while(canFlip(turnColor, userInput, gameboard) == 1){
                 flipNum += doFlip(turnColor, userInput, gameboard);
             }
             if(flipNum > 0){
-                changeColor(turnColor);/*뒤집을 돌 갯수만큼 색 문자열 반대색으로 변환*/
+				printFlipResult(turnColor, flipResult);/*뒤집은 돌 결과 출력*/
+                changeColor(turnColor);/*반대색 문자열로 변경*/
             }
         }
 		
