@@ -36,9 +36,9 @@ int main(int argc, char *argv[]) {
         
         if(validateUserInput(turnColor, userInput, gameboard) == 1){ /*유요한 좌표일 때*/
 			initFlipResult(flipResult);/*결과 출력 배열, flipResult 초기화*/
-            flipNum = doFlip(turnColor, userInput, gameboard);/*뒤집을 돌 갯수*/
+            flipNum = doFlip(turnColor, userInput, flipResult, gameboard);/*뒤집을 돌 갯수*/
             while(canFlip(turnColor, userInput, gameboard) == 1){
-                flipNum += doFlip(turnColor, userInput, gameboard);
+                flipNum += doFlip(turnColor, userInput, flipResult, gameboard);
             }
             if(flipNum > 0){
 				printFlipResult(turnColor, flipResult);/*뒤집은 돌 결과 출력*/

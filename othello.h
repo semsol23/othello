@@ -14,7 +14,7 @@ void initFlipResult(int flipResult[8]);
 int canFlip(char color[], int userInput[], int gameboard[N][N]);
 int getFlipDirection(char color[], int userInput[], int gameboard[N][N]);
 int isInSidePoint(int point[]);
-int doFlip(char color[], int userInput[], int gameboard[N][N]);
+int doFlip(char color[], int userInput[], int flipResult[8], int gameboard[N][N]);
 void printFlipResult(char color[], int flipResult[8]);
 int isGameEnd(int gameboard[N][N]);
 void checkResult(int gameboard[N][N]);
