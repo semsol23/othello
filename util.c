@@ -29,7 +29,7 @@ void changeColor(char color[]) {
     int i;
     char blackChar[6] = "black";
     char whiteChar[6] = "white";
-    if(strcmp(color, "white") == 0){
+    if(strcmp(color, "white") == 0 || strcmp(color, "White") == 0){
         for(i=0; i<5; i++){
             color[i] = blackChar[i]; /*문자열 white를 black으로 변경*/
         }
